@@ -1,14 +1,8 @@
-User-agent: Googlebot
-Allow: /
+# Robots.txt pour formation.horizonduo.net - Mis à jour le 05/10/2025
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Autoriser tous les moteurs de recherche et bots
 User-agent: *
 Allow: /
+
+# Sitemap principal (obligatoire avec URL complète)
+Sitemap: https://formation.horizonduo.net/sitemap.xml
