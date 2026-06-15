@@ -7,14 +7,12 @@ import {
   Briefcase,
   Calendar,
   CheckCircle,
-  Clock,
   FileText,
   GraduationCap,
   Layers,
   Linkedin,
   Mail,
   Menu,
-  Plus,
   Quote,
   Sparkles,
   Star,
@@ -32,14 +30,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,23 +41,24 @@ export default function Index() {
   const navItems = [
     { label: "IA & formations", id: "ia-formations" },
     { label: "Expertise", id: "expertise" },
+    { label: "Interventions", id: "interventions" },
     { label: "Réalisations", id: "realisations" },
     { label: "Partenaires", id: "partenaires" },
     { label: "Témoignages", id: "temoignages" },
     { label: "Contact", id: "contact" },
   ];
 
-  const handleScroll = (id: string): void => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-      const focusableEl = el.querySelector("h2, h3");
-      if (focusableEl) {
-        (focusableEl as HTMLElement).setAttribute("tabindex", "-1");
-        (focusableEl as HTMLElement).focus({ preventScroll: true });
-      }
-      setMenuOpen(false);
+  const scrollTo = (id: string): void => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    element.scrollIntoView({ behavior: "smooth" });
+    const heading = element.querySelector("h2, h3");
+    if (heading) {
+      (heading as HTMLElement).setAttribute("tabindex", "-1");
+      (heading as HTMLElement).focus({ preventScroll: true });
     }
+    setMenuOpen(false);
   };
 
   const proofPoints = [
@@ -109,90 +100,54 @@ export default function Index() {
     },
   ];
 
-  const modules = [
+  const interventions = [
     {
-      id: "ia",
       title: "IA & transformation des usages",
-      description: "Passer des outils IA aux cas pratiques métier, avec une pédagogie claire et responsable.",
       icon: Brain,
-      color: "purple",
-      bgColor: "bg-purple-50",
-      borderColor: "border-purple-200",
-      iconBg: "bg-purple-500",
-      hoverShadow: "hover:shadow-purple-200",
-      outcomes: [
-        "Comparer les bons outils selon les besoins",
+      tone: "bg-purple-50 border-purple-200 text-purple-700",
+      description: "Passer des outils IA aux cas pratiques métier, avec une pédagogie claire, responsable et directement applicable.",
+      points: [
+        "Comparer les outils selon les besoins",
         "Construire des prompts et workflows utiles",
-        "Transformer un usage IA en exercice opérationnel",
+        "Concevoir des ateliers IA métier",
       ],
-      catalog: [
-        { title: "IA appliquée au marketing et à la communication", duration: "Certification RS", type: "Professionnels" },
-        { title: "Création de contenus avec IA générative", duration: "21h", type: "CPF", cpfCode: "RS6776" },
-        { title: "Atelier IA & PME : applications concrètes", duration: "3h", type: "Atelier" },
-      ],
+      examples: ["IA appliquée au marketing et à la communication", "Création de contenus avec IA générative", "Atelier IA & PME"],
     },
     {
-      id: "pedagogie",
       title: "Ingénierie pédagogique",
-      description: "Concevoir des supports, exercices, quiz et cas pratiques alignés avec des référentiels.",
       icon: GraduationCap,
-      color: "blue",
-      bgColor: "bg-blue-50",
-      borderColor: "border-blue-200",
-      iconBg: "bg-blue-500",
-      hoverShadow: "hover:shadow-blue-200",
-      outcomes: [
+      tone: "bg-blue-50 border-blue-200 text-blue-700",
+      description: "Créer des parcours, supports, exercices et évaluations alignés avec les objectifs pédagogiques et les référentiels.",
+      points: [
         "Structurer une progression pédagogique",
-        "Adapter les contenus à un public précis",
-        "Créer des activités interactives et évaluables",
+        "Adapter les contenus au niveau des apprenants",
+        "Créer quiz, cas pratiques et mises en situation",
       ],
-      catalog: [
-        { title: "Conception de modules IA certifiants", duration: "Sur mesure", type: "RS" },
-        { title: "Création d'exercices et cas pratiques", duration: "Sur mesure", type: "Formation" },
-        { title: "Amélioration de supports existants", duration: "Audit", type: "Conseil" },
-      ],
+      examples: ["Conception de modules IA certifiants", "Amélioration de supports existants", "Adaptation aux référentiels RS"],
     },
     {
-      id: "management",
       title: "Management & performance",
-      description: "Développer la posture managériale, l'efficacité collective et le pilotage de projets.",
       icon: Users,
-      color: "green",
-      bgColor: "bg-green-50",
-      borderColor: "border-green-200",
-      iconBg: "bg-green-500",
-      hoverShadow: "hover:shadow-green-200",
-      outcomes: [
+      tone: "bg-green-50 border-green-200 text-green-700",
+      description: "Développer la posture managériale, l'efficacité collective, le pilotage de projets et la communication d'équipe.",
+      points: [
         "Renforcer la posture et la communication",
         "Piloter une équipe ou un projet complexe",
         "Relier management, IA et performance terrain",
       ],
-      catalog: [
-        { title: "Posture managériale & accompagnement disciplinaire", duration: "15.5h", type: "Bachelor" },
-        { title: "Management de projets complexes", duration: "4h", type: "Master 1" },
-        { title: "Manager la performance d'une équipe", duration: "21h", type: "CPF", cpfCode: "RS6910" },
-      ],
+      examples: ["Posture managériale", "Management de projets", "Performance d'équipe"],
     },
     {
-      id: "commercial",
       title: "Commercial, marketing & RH",
-      description: "Relier relation client, développement commercial, marketing et ressources humaines.",
       icon: Target,
-      color: "orange",
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200",
-      iconBg: "bg-orange-500",
-      hoverShadow: "hover:shadow-orange-200",
-      outcomes: [
+      tone: "bg-orange-50 border-orange-200 text-orange-700",
+      description: "Relier relation client, développement commercial, marketing, communication et ressources humaines.",
+      points: [
         "Outiller les équipes commerciales et RH",
         "Appliquer l'IA aux fonctions métier",
-        "Développer des contenus et plans d'action concrets",
+        "Développer des plans d'action concrets",
       ],
-      catalog: [
-        { title: "Techniques de vente et posture conseil", duration: "15h", type: "Bachelor" },
-        { title: "Performance commerciale de la stratégie", duration: "19h", type: "Master 2" },
-        { title: "L'essentiel de la gestion RH", duration: "21h", type: "CPF" },
-      ],
+      examples: ["Techniques de vente", "Marketing et communication", "Ressources humaines"],
     },
   ];
 
@@ -271,18 +226,18 @@ export default function Index() {
         <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-border shadow-sm" role="banner">
           <div className="container mx-auto px-4 py-3 flex justify-between items-center gap-4">
             <button
-              onClick={() => handleScroll("hero")}
+              onClick={() => scrollTo("hero")}
               className="text-lg md:text-xl font-bold text-primary hover:underline focus:ring-2 focus:ring-primary focus:outline-none rounded-md px-2 py-1 text-left"
               aria-label="Retour à l'accueil"
             >
               Frédéric Legrand
             </button>
 
-            <nav className="hidden lg:flex gap-5 text-sm font-medium" aria-label="Navigation principale">
+            <nav className="hidden xl:flex gap-4 text-sm font-medium" aria-label="Navigation principale">
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleScroll(item.id)}
+                  onClick={() => scrollTo(item.id)}
                   className="relative hover:text-primary after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 hover:after:w-full after:h-[2px] after:bg-primary after:transition-all focus:ring-2 focus:ring-primary focus:outline-none rounded-md px-2 py-1"
                 >
                   {item.label}
@@ -290,7 +245,7 @@ export default function Index() {
               ))}
             </nav>
 
-            <div className="lg:hidden">
+            <div className="xl:hidden">
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
@@ -304,11 +259,11 @@ export default function Index() {
           </div>
 
           {menuOpen && (
-            <nav id="mobile-menu" className="lg:hidden bg-white border-t border-border" role="navigation" aria-label="Menu mobile">
+            <nav id="mobile-menu" className="xl:hidden bg-white border-t border-border" role="navigation" aria-label="Menu mobile">
               {navItems.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleScroll(item.id)}
+                  onClick={() => scrollTo(item.id)}
                   className="block w-full text-left px-4 py-3 hover:bg-muted focus:ring-2 focus:ring-primary focus:outline-none"
                 >
                   {item.label}
@@ -334,7 +289,7 @@ export default function Index() {
                   />
                   <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
                     <Badge className="bg-white/90 text-primary hover:bg-white">IA appliquée</Badge>
-                    <Badge className="bg-white/90 text-primary hover:bg-white">Certifications RS</Badge>
+                    <Badge className="bg-white/90 text-primary hover:bg-white">Référentiels RS</Badge>
                     <Badge className="bg-white/90 text-primary hover:bg-white">Pédagogie active</Badge>
                   </div>
                 </div>
@@ -485,119 +440,42 @@ export default function Index() {
             </div>
           </section>
 
-          <section id="modules" className="py-20 bg-white" aria-labelledby="heading-modules">
+          <section id="interventions" className="py-20 bg-white" aria-labelledby="heading-interventions">
             <div className="container mx-auto px-4">
               <div className="text-center mb-14">
-                <h2 id="heading-modules" className="text-4xl font-bold mb-4 text-foreground">Offres & domaines d'intervention</h2>
+                <h2 id="heading-interventions" className="text-4xl font-bold mb-4 text-foreground">Interventions & domaines d'expertise</h2>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Des interventions modulables : formation, conception pédagogique, amélioration de supports, ateliers ou accompagnement.
+                  Des formats modulables : formation, conception pédagogique, amélioration de supports, ateliers ou accompagnement.
                 </p>
               </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                {modules.map((module) => {
-                  const IconComponent = module.icon;
+              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                {interventions.map((intervention) => {
+                  const IconComponent = intervention.icon;
                   return (
-                    <Dialog key={module.id}>
-                      <DialogTrigger asChild>
-                        <Card className={`${module.bgColor} ${module.borderColor} border-2 cursor-pointer transition-all duration-300 hover:scale-105 ${module.hoverShadow} hover:shadow-xl group h-full`}>
-                          <CardHeader className="text-center pb-4 relative">
-                            <div className={`w-16 h-16 ${module.iconBg} rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                              <IconComponent className="h-8 w-8 text-white" aria-hidden="true" />
-                            </div>
-                            <CardTitle className="text-xl mb-2">{module.title}</CardTitle>
-                            <CardDescription className="text-center text-sm">{module.description}</CardDescription>
-                            <div className="absolute bottom-2 right-2 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                              <div className={`w-8 h-8 ${module.iconBg} rounded-lg flex items-center justify-center`}>
-                                <Plus className="h-4 w-4 text-white" aria-hidden="true" />
-                              </div>
-                            </div>
-                          </CardHeader>
-                          <CardContent className="pt-0">
-                            <Badge variant="outline" className="bg-white/60">Voir les exemples</Badge>
-                          </CardContent>
-                        </Card>
-                      </DialogTrigger>
-                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto" aria-describedby={`dialog-description-${module.id}`}>
-                        <DialogHeader>
-                          <div className="flex items-center gap-4 mb-4">
-                            <div className={`w-12 h-12 ${module.iconBg} rounded-lg flex items-center justify-center shrink-0`}>
-                              <IconComponent className="h-6 w-6 text-white" aria-hidden="true" />
-                            </div>
-                            <div>
-                              <DialogTitle className="text-2xl">{module.title}</DialogTitle>
-                              <DialogDescription id={`dialog-description-${module.id}`} className="text-base mt-1">
-                                {module.description}
-                              </DialogDescription>
-                            </div>
-                          </div>
-                        </DialogHeader>
-                        <div className="space-y-5">
-                          <div>
-                            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                              <Target className="h-5 w-5" aria-hidden="true" />
-                              Résultats recherchés
-                            </h3>
-                            <div className="space-y-2">
-                              {module.outcomes.map((outcome) => (
-                                <div key={outcome} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                  <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" aria-hidden="true" />
-                                  <span>{outcome}</span>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div>
-                            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                              <BookOpen className="h-5 w-5" aria-hidden="true" />
-                              Exemples de formats
-                            </h3>
-                            {module.catalog.map((formation, index) => (
-                              <Card key={index} className={`${module.bgColor} border-l-4 ${
-                                module.color === "orange" ? "border-l-orange-500" :
-                                module.color === "blue" ? "border-l-blue-500" :
-                                module.color === "green" ? "border-l-green-500" :
-                                "border-l-purple-500"
-                              } mb-3`}>
-                                <CardContent className="p-4">
-                                  <div className="flex justify-between items-start gap-3 mb-2">
-                                    <h4 className="font-semibold text-base">{formation.title}</h4>
-                                    <Badge variant="secondary" className="shrink-0">{formation.type}</Badge>
-                                  </div>
-                                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                                    <div className="flex items-center gap-1">
-                                      <Clock className="h-4 w-4" aria-hidden="true" />
-                                      <span>{formation.duration}</span>
-                                    </div>
-                                    {formation.cpfCode && (
-                                      <div className="flex items-center gap-1 text-green-700">
-                                        <CheckCircle className="h-4 w-4" aria-hidden="true" />
-                                        <span>{formation.cpfCode}</span>
-                                      </div>
-                                    )}
-                                  </div>
-                                </CardContent>
-                              </Card>
-                            ))}
-                          </div>
-
-                          <div className="flex flex-col sm:flex-row gap-3 mt-6">
-                            <Button className="flex-1 gradient-accent text-white" asChild>
-                              <a href={calendlyLink} target="_blank" rel="noopener noreferrer" aria-label="Réserver un échange via Calendly">
-                                <Calendar className="mr-2 h-4 w-4" aria-hidden="true" />
-                                Échanger sur ce besoin
-                              </a>
-                            </Button>
-                            <Button variant="outline" className="flex-1" asChild>
-                              <a href={emailLink} aria-label="Demander un devis par email">
-                                <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
-                                Demander un devis
-                              </a>
-                            </Button>
-                          </div>
+                    <Card key={intervention.title} className={`${intervention.tone} border-2 shadow-soft h-full`}>
+                      <CardHeader>
+                        <div className="w-14 h-14 rounded-lg bg-white flex items-center justify-center mb-3 shadow-soft">
+                          <IconComponent className="h-7 w-7" aria-hidden="true" />
                         </div>
-                      </DialogContent>
-                    </Dialog>
+                        <CardTitle className="text-xl text-foreground">{intervention.title}</CardTitle>
+                        <CardDescription className="text-muted-foreground">{intervention.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-5">
+                        <div className="space-y-2">
+                          {intervention.points.map((point) => (
+                            <div key={point} className="flex items-start gap-2 text-sm text-foreground">
+                              <CheckCircle className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
+                              <span>{point}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {intervention.examples.map((example) => (
+                            <Badge key={example} variant="outline" className="bg-white/70 text-foreground">{example}</Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
                   );
                 })}
               </div>
@@ -703,7 +581,7 @@ export default function Index() {
             </div>
           </section>
 
-          <section id="cpf" className="py-16 bg-white" aria-labelledby="heading-cpf">
+          <section id="certifications" className="py-16 bg-white" aria-labelledby="heading-certifications">
             <div className="container mx-auto px-4">
               <div className="max-w-4xl mx-auto">
                 <Card className="gradient-primary shadow-card border-0 text-white">
@@ -711,9 +589,9 @@ export default function Index() {
                     <div className="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="h-8 w-8 text-white" aria-hidden="true" />
                     </div>
-                    <CardTitle id="heading-cpf" className="text-2xl mb-4">Formations certifiantes et CPF</CardTitle>
+                    <CardTitle id="heading-certifications" className="text-2xl mb-4">Formations certifiantes & référentiels RS</CardTitle>
                     <CardDescription className="text-white/90 text-lg">
-                      Certaines formations peuvent être mobilisées via le CPF lorsqu'elles sont portées par mes partenaires certifiés.
+                      Selon le contexte, les parcours peuvent s'inscrire dans le cadre de certifications ou de référentiels portés par des partenaires habilités.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="text-center">
