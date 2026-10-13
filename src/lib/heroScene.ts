@@ -167,6 +167,8 @@ export function mountHeroScene(THREE, canvas, anchor, opts = {}) {
     renderer.setSize(W, H, false);
     camera.aspect = W / H; camera.updateProjectionMatrix();
     place();
+    // Changer la taille du canvas efface l'image : en mode fixe (pas de boucle d'animation), on la redessine.
+    if (reduce) renderer.render(scene, camera);
   }
   const ro = new ResizeObserver(resize); ro.observe(canvas);
   resize();
@@ -221,7 +223,12 @@ export function mountHeroScene(THREE, canvas, anchor, opts = {}) {
     geo.attributes.position.needsUpdate = geo.attributes.aTo.needsUpdate = true;
     group.rotation.set(shots[3].rx, 0.6, shots[3].rz);
     opts.onPhase && opts.onPhase(3, PHASES[3]);
+    place();
     renderer.render(scene, camera);
+    // Le portrait peut bouger après le chargement (polices, images) : on recale l'image fixe.
+    const onLayout = () => { place(); renderer.render(scene, camera); };
+    window.addEventListener('load', onLayout, { once: true });
+    setTimeout(onLayout, 1200);
   } else {
     raf = requestAnimationFrame(frame);
   }
