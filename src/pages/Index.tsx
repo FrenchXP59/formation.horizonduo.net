@@ -42,6 +42,7 @@ export default function Index() {
     { label: "IA & formations", id: "ia-formations" },
     { label: "Expertise", id: "expertise" },
     { label: "Interventions", id: "interventions" },
+    { label: "Références 2026-2027", id: "references" },
     { label: "Réalisations", id: "realisations" },
     { label: "Partenaires", id: "partenaires" },
     { label: "Témoignages", id: "temoignages" },
@@ -63,9 +64,9 @@ export default function Index() {
 
   const proofPoints = [
     "20 ans d'expérience managériale terrain",
-    "Formations IA professionnelles et certifiantes",
-    "Interventions BTS, Bachelor, Master et professionnels",
-    "Création d'outils, cas pratiques et contenus interactifs",
+    "Formations IA, RH et ingénierie pédagogique",
+    "Interventions en enseignement supérieur et en entreprise",
+    "Veille IA, Skills, automatisation et contenus multimédias",
   ];
 
   const aiTrainingThemes = [
@@ -74,29 +75,33 @@ export default function Index() {
     "Développement de l'activité grâce à l'IA",
     "IA appliquée aux fonctions commerciales",
     "IA appliquée au marketing et à la communication",
-    "IA appliquée aux ressources humaines",
+    "IA appliquée aux ressources humaines (IA & RH)",
   ];
 
   const expertiseBlocks = [
     {
-      title: "Assistants IA",
+      title: "Veille IA & sources",
+      icon: FileText,
+      description: "Suivre les évolutions, confronter les informations et transformer la veille en applications pédagogiques.",
+      items: ["Veille technologique", "NotebookLM", "Contrôle des sources"],
+    },
+    {
+      title: "Choix des modèles IA",
       icon: Brain,
+      description: "Comparer les modèles selon les usages, leurs limites, le coût, le contexte et les données mobilisées.",
       items: ["ChatGPT", "Claude", "Gemini", "Perplexity"],
     },
     {
-      title: "Recherche documentaire",
-      icon: FileText,
-      items: ["NotebookLM", "Projects ChatGPT", "Espaces documentaires IA"],
-    },
-    {
-      title: "Agents & automatisation",
+      title: "Skills & automatisation",
       icon: Workflow,
-      items: ["Mode Agent ChatGPT", "Antigravity", "Make", "Workflows IA"],
+      description: "Concevoir des méthodes réutilisables et des workflows avec des étapes de vérification humaine.",
+      items: ["Skills", "Assistants spécialisés", "Agents", "Make / n8n"],
     },
     {
-      title: "Création de contenus",
+      title: "Motion design & médias",
       icon: Sparkles,
-      items: ["Canva", "HeyGen", "Runway", "Suno"],
+      description: "Produire des briefs, des scénarios et des ressources multimédias au service de l'apprentissage.",
+      items: ["Motion design", "Podcasts", "Vidéos", "Supports accessibles"],
     },
   ];
 
@@ -153,24 +158,30 @@ export default function Index() {
 
   const realisations = [
     {
+      title: "Skills & assistants pédagogiques",
+      icon: Workflow,
+      description: "Création de méthodes réutilisables pour structurer des supports, nettoyer des sous-titres, préparer des exercices ou vérifier les contenus générés.",
+    },
+    {
+      title: "Veille & recherche sourcée",
+      icon: FileText,
+      description: "Organisation de la veille IA, comparaison des modèles et exploitation de documents avec NotebookLM, tout en conservant un contrôle des sources et des résultats.",
+    },
+    {
+      title: "Motion design & contenus multimédias",
+      icon: Sparkles,
+      description: "Conception de scripts, storyboards, vidéos courtes, podcasts et ressources pédagogiques, avec une attention portée à l'accessibilité.",
+    },
+    {
       title: "Applications pédagogiques",
       icon: Layers,
-      description: "Quiz, simulateurs, applications de formation et outils interactifs pour rendre les apprentissages plus concrets.",
-    },
-    {
-      title: "Horizon Duo",
-      icon: BookOpen,
-      description: "Production de contenus autour de l'IA, de la bourse et des voyages : articles, podcasts, vidéos et applications web.",
-    },
-    {
-      title: "Contenus digitaux",
-      icon: FileText,
-      description: "Podcasts IA, vidéos pédagogiques, livres publiés et contenus conçus pour transmettre simplement des sujets complexes.",
+      description: "Développement de quiz, simulateurs et outils interactifs pour personnaliser les activités et faciliter la mise en pratique des compétences.",
     },
   ];
 
   const partners = [
     { name: "AMOS", label: "Sport Business School", icon: Award },
+    { name: "EDHEC", label: "Hackathons IA via 361 Degrés", icon: GraduationCap },
     { name: "Axio Formation", label: "Formation professionnelle", icon: Target },
     { name: "Digital College", label: "Formation digitale", icon: Briefcase },
     { name: "ECOR / ECAR", label: "École de commerce", icon: BookOpen },
@@ -201,15 +212,15 @@ export default function Index() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Formations IA, management et pédagogie | Frédéric Legrand</title>
+        <title>Formateur IA, RH et ingénierie pédagogique | Frédéric Legrand</title>
         <meta
           name="description"
-          content="Frédéric Legrand conçoit et anime des formations IA, management, marketing, RH et développement commercial. Ingénierie pédagogique, certifications RS, outils interactifs et cas pratiques."
+          content="Frédéric Legrand, formateur IA et concepteur pédagogique. Formations IA & RH, veille technologique, Skills, automatisation, motion design et interventions AMOS, EDHEC et Axio."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://formation.horizonduo.net/" />
         <meta property="og:title" content="Formations IA & ingénierie pédagogique - Frédéric Legrand" />
-        <meta property="og:description" content="Formations IA certifiantes, cas pratiques métier, conception pédagogique et outils interactifs pour l'enseignement supérieur et les professionnels." />
+        <meta property="og:description" content="Veille IA, Skills, IA & RH, automatisation et ingénierie pédagogique : des interventions et réalisations concrètes pour les entreprises et l'enseignement supérieur." />
         <meta property="og:image" content="https://formation.horizonduo.net/og-preview.png" />
         <meta property="og:url" content="https://formation.horizonduo.net/" />
         <meta property="og:type" content="website" />
@@ -296,16 +307,16 @@ export default function Index() {
 
                 <div className="text-center lg:text-left text-white">
                   <p className="text-base md:text-lg font-semibold text-white/85 mb-3">
-                    Frédéric Legrand - formateur, concepteur pédagogique et auteur
+                    Frédéric Legrand — formateur IA, concepteur pédagogique et auteur
                   </p>
                   <h1 className="text-4xl md:text-6xl font-bold mb-5 leading-tight">
-                    Transformer l'IA en compétences concrètes
+                    Transformer l'IA en compétences et outils concrets
                   </h1>
                   <p className="text-xl md:text-2xl text-white/90 mb-4 font-medium">
-                    Formations IA, management, marketing, RH et développement commercial pour l'enseignement supérieur et les professionnels.
+                    Formations IA et RH, ingénierie pédagogique, veille technologique et automatisation pour l'enseignement supérieur et les professionnels.
                   </p>
                   <p className="text-lg text-white/80 mb-8 max-w-3xl">
-                    J'aide les équipes et les apprenants à comprendre les outils, choisir les bons usages et produire des cas pratiques directement applicables.
+                    Je confronte les modèles, construis des Skills et des outils pédagogiques, et transforme les nouveautés de l'IA en ateliers, supports et cas pratiques directement mobilisables.
                   </p>
 
                   <div className="grid sm:grid-cols-2 gap-3 mb-8 text-left">
@@ -404,7 +415,7 @@ export default function Index() {
               <div className="max-w-4xl mx-auto text-center mb-14">
                 <h2 id="heading-expertise" className="text-4xl font-bold mb-4 text-foreground">Expertise IA terrain</h2>
                 <p className="text-xl text-muted-foreground">
-                  Mon positionnement ne repose pas sur un outil unique : je compare les modèles, les versions, les fenêtres de contexte, les capacités de recherche et les usages métier.
+                  Une veille continue me permet de suivre l'évolution des modèles, des Skills, des agents et des nouveaux outils de production. Chaque nouveauté est évaluée à l'aune de sa pertinence pédagogique, de ses limites et de ses sources.
                 </p>
               </div>
 
@@ -420,6 +431,7 @@ export default function Index() {
                         <CardTitle className="text-xl">{block.title}</CardTitle>
                       </CardHeader>
                       <CardContent>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4">{block.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {block.items.map((item) => (
                             <Badge key={item} variant="secondary" className="text-sm">{item}</Badge>
@@ -434,7 +446,7 @@ export default function Index() {
               <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-card p-6 md:p-8">
                 <h3 className="text-2xl font-bold mb-4 text-foreground">Mon angle différenciant</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  J'explique quand utiliser ChatGPT, Claude, Gemini, Perplexity, NotebookLM ou un agent IA, mais aussi quand ne pas les utiliser. L'enjeu est de relier le bon outil au bon contexte : recherche, synthèse documentaire, création, automatisation, formation ou production opérationnelle.
+                  Je ne transmets pas uniquement la maîtrise d'applications. Je montre comment organiser une veille fiable, sélectionner le bon modèle, concevoir des Skills et des workflows réutilisables, puis contrôler les productions. La finalité reste l'apprentissage, la qualité des résultats et l'autonomie des apprenants.
                 </p>
               </div>
             </div>
@@ -482,15 +494,76 @@ export default function Index() {
             </div>
           </section>
 
+          <section id="references" className="py-20 bg-secondary/20" aria-labelledby="heading-references">
+            <div className="container mx-auto px-4">
+              <div className="max-w-4xl mx-auto text-center mb-14">
+                <h2 id="heading-references" className="text-4xl font-bold mb-4 text-foreground">Interventions récentes & programmées</h2>
+                <p className="text-xl text-muted-foreground">
+                  Des missions concrètes en enseignement supérieur et en formation professionnelle. Les cours à venir sont signalés comme programmés.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                <Card className="border-0 bg-white shadow-card h-full">
+                  <CardHeader>
+                    <Badge variant="secondary" className="w-fit mb-2">Réalisé · septembre 2026</Badge>
+                    <CardTitle className="text-2xl">Hackathons IA — EDHEC</CardTitle>
+                    <CardDescription>2 septembre à Lille · 7 septembre à Nice</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Animation de hackathons autour de l'intelligence artificielle auprès d'étudiants de l'EDHEC, dans le cadre d'une collaboration avec 361 Degrés.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-0 bg-white shadow-card h-full">
+                  <CardHeader>
+                    <Badge variant="secondary" className="w-fit mb-2">Programmé · 2026-2027</Badge>
+                    <CardTitle className="text-2xl">AMOS — Bachelor 1 à Mastère 2</CardTitle>
+                    <CardDescription>Cours planifiés de novembre 2026 à avril 2027</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Fondamentaux de l'IA, IA appliquée au marketing et à la communication, automatisation, productivité et projet de concours de vente. Une progression adaptée aux niveaux et aux compétences visées.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-0 bg-white shadow-card h-full">
+                  <CardHeader>
+                    <Badge variant="secondary" className="w-fit mb-2">Formations professionnelles · 2026</Badge>
+                    <CardTitle className="text-2xl">Axio — IA & RH et usages métier</CardTitle>
+                    <CardDescription>Formation professionnelle et parcours certifiants</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Interventions en IA appliquée aux ressources humaines, au marketing et à la communication, avec des cas pratiques, des évaluations et des supports adaptés. Session collective IA & RH programmée en octobre 2026.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-0 bg-white shadow-card h-full">
+                  <CardHeader>
+                    <Badge variant="secondary" className="w-fit mb-2">Réalisé · juillet 2026</Badge>
+                    <CardTitle className="text-2xl">Pédagogie IA & accessibilité</CardTitle>
+                    <CardDescription>Formation incluant un apprenant non-voyant</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Adaptation d'un parcours IA générative avec supports structurés, ressources audio, exercices concrets et attention particulière à l'accessibilité et aux besoins des apprenants.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
+
           <section id="realisations" className="py-20 bg-amber-50/30" aria-labelledby="heading-realisations">
             <div className="container mx-auto px-4">
               <div className="max-w-4xl mx-auto text-center mb-14">
                 <h2 id="heading-realisations" className="text-4xl font-bold mb-4 text-foreground">Réalisations concrètes</h2>
                 <p className="text-xl text-muted-foreground">
-                  Je combine formation, création de contenus et développement d'outils pour rendre les apprentissages plus vivants.
+                  Des réalisations qui relient expérimentation, veille, choix des modèles et ingénierie pédagogique.
                 </p>
               </div>
-              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 {realisations.map((item) => {
                   const IconComponent = item.icon;
                   return (
@@ -519,7 +592,7 @@ export default function Index() {
                   Interventions et collaborations avec des écoles, organismes et acteurs de la formation professionnelle.
                 </p>
               </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 max-w-6xl mx-auto">
                 {partners.map((partner) => {
                   const IconComponent = partner.icon;
                   return (
