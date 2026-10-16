@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import {
   Award,
@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
+import HeroScene, { HeroPhaseLabel } from "@/components/HeroScene";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -33,6 +34,8 @@ import {
 
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const portraitRef = useRef<HTMLImageElement>(null);
+  const [heroPhase, setHeroPhase] = useState<{ i: number; name: string } | null>(null);
 
   const calendlyLink = "https://calendly.com/frederic-legrand59/rdv-formation";
   const linkedinLink = "https://www.linkedin.com/in/frederic-legrand-horizonduo";
@@ -287,10 +290,12 @@ export default function Index() {
         <main id="main-content">
           <section id="hero" className="relative min-h-[92vh] flex items-center gradient-hero overflow-hidden" aria-label="Présentation">
             <div className="absolute inset-0 bg-black/10" />
+            <HeroScene anchorRef={portraitRef} onPhase={(i, name) => setHeroPhase({ i, name })} />
             <div className="relative z-10 container mx-auto px-4 py-14">
               <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-center max-w-6xl mx-auto">
                 <div className="text-center lg:text-left">
                   <img
+                    ref={portraitRef}
                     src="/images/frederic_legrand_portrait_1.webp"
                     alt="Frédéric Legrand - formateur IA et ingénierie pédagogique"
                     width="192"
@@ -303,6 +308,7 @@ export default function Index() {
                     <Badge className="bg-white/90 text-primary hover:bg-white">Référentiels RS</Badge>
                     <Badge className="bg-white/90 text-primary hover:bg-white">Pédagogie active</Badge>
                   </div>
+                  <HeroPhaseLabel phase={heroPhase} />
                 </div>
 
                 <div className="text-center lg:text-left text-white">
